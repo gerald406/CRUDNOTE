@@ -10,12 +10,12 @@ class NoteController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
-        $notes = Note::latest()->paginate(10);
-        return $notes;
+        $notes = Note::latest()->paginate(15);
+        return view('notes.index', compact('notes'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
