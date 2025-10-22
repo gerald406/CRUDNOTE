@@ -21,7 +21,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
@@ -29,7 +29,12 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:5',
+            'description' => 'required|string'
+        ]);
+        Note::create($request->all());
+        return redirect()->route('notes.index');
     }
 
     /**
@@ -37,7 +42,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        //
+        return view('notes.show', compact('note'));
     }
 
     /**
@@ -45,7 +50,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        //
+        return view('notes.edit', compact('note'));
     }
 
     /**
@@ -53,7 +58,15 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        // Actualiza una nota específica en la base de datos.
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $note->update($request->all());
+
+        return redirect()->route('notes.index');
     }
 
     /**

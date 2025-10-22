@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-4 text-center">
-        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('notes.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Crear Nueva Nota
         </a>
     </div>
@@ -15,8 +15,8 @@
                 <h3 class="text-lg font-bold">{{ $note->title; }}</h3>
                 <p class="text-gray-600">{{ $note->description  }}</p>
                 <div class="mt-2">
-                    <a href="#" class="text-blue-500 hover:underline">Ver</a> |
-                    <a href="#" class="text-yellow-500 hover:underline">Editar</a> |
+                    <a href="{{ route('notes.show', $note ) }}" class="text-blue-500 hover:underline">Ver</a> |
+                    <a href="{{ route('notes.edit', $note ) }}" class="text-yellow-500 hover:underline">Editar</a> |
                     <button class="text-red-500 hover:underline">Eliminar</button>
                 </div>
             </div>
