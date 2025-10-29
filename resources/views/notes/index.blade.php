@@ -17,7 +17,12 @@
                 <div class="mt-2">
                     <a href="{{ route('notes.show', $note ) }}" class="text-blue-500 hover:underline">Ver</a> |
                     <a href="{{ route('notes.edit', $note ) }}" class="text-yellow-500 hover:underline">Editar</a> |
-                    <button class="text-red-500 hover:underline">Eliminar</button>
+                    <form action="{{ route('notes.destroy', $note) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
+                    </form>
+
                 </div>
             </div>
         @empty
