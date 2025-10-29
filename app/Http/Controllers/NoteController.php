@@ -74,6 +74,10 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        // Elimina una nota específica.
+        $note->delete();
+
+        return redirect()->route('notes.index');
+
     }
 }
